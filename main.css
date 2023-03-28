@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+:root {
+    --clr-soft-red: hsl(10, 79%, 65%);
+    --clr-hover-bg: hsl(10, 100%, 76%);
+    --clr-hover-active: hsl(187, 49%, 80%);
+    --clr-cyan: hsl(186, 34%, 60%);
+    --clr-dark-brown: hsl(25, 47%, 15%);
+    --clr-medium-brown: hsl(28, 10%, 53%);
+    --clr-cream: hsl(27, 66%, 92%);
+    --clr-pale-orange: hsl(33, 100%, 98%);
+
+    --ff-primary: 'DM Sans', sans-serif;
+    --border-radius: 1.6rem;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--ff-primary);
+    font-size: 1.8rem;
+    background-color: var(--clr-cream);
+    width: 100%;
+    position: relative;
+}
+
+.spendings {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spendings-wrapper {
+    width: 92vw;
+    max-width: 52rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.6rem;
+    /* border: 1px solid blue; */
+}
+
+.spendings-header {
+    background-color: var(--clr-soft-red);
+    padding: 2.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--border-radius);
+    color: hsl(0, 0%, 100%);
+}
+
+.header-name {
+    font-size: 1.6rem;
+    margin-bottom: .75rem;
+}
+
+.header-sum {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.logo-img {
+    width: 7rem;
+    height: auto;
+    display: block;
+}
+
+.spending-content-wrapper {
+    border-radius: var(--border-radius);
+    background-color: var(--clr-pale-orange);
+    padding: 3rem 2.4rem 3.6rem 2.4rem;
+}
+
+.chart-display {
+  width: 100%;
+  height: 30rem;
+}
+
+.chart-title {
+  color: var(--clr-dark-brown);
+  font-size: 3.6rem;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 25rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.chart-graph {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  /* height: 16rem; */
+  width: 100%;
+  background-color: var(--clr-soft-red);
+  border-radius: .6rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.chart-graph::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    width: 6rem;
+    left: calc(50% - 3rem);
+    top: 0;
+    transform: translateY(-125%);
+    padding: .5rem;
+    font-size: 1.6rem;
+    font-family: var(--ff-primary);
+    font-weight: 700;
+    border-radius: .5rem;
+    background-color: var(--clr-dark-brown);
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 1px 5px hsl(0 0% 10% / .2);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 200ms linear;
+}
+
+.chart-graph:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+.chart-graph:hover {
+  background-color: var(--clr-hover-bg);
+}
+
+.today-graph {
+    background-color: var(--clr-cyan);
+}
+
+.today-graph:hover {
+    background-color: var(--clr-hover-active);   
+}
+
+.chart-label {
+  font-size: 1.5rem;
+  color: var(--clr-medium-brown);
+  text-align: center;
+}
+
+/*
+.chart:nth-child(even) > .chart-graph {
+  background-color: var(--clr-cyan);
+  height: 8rem;
+}
+*/
+
+.chart-graph.today {
+  background-color: crimson !important;
+  height: 11rem !important;
+}
+
+.spendings-footer {
+    margin-top: 2.6rem;
+    padding-top: 2.4rem;
+    border-top: 1px solid var(--clr-cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-name {
+    font-size: 2rem;
+    color: var(--clr-medium-brown);
+}
+
+.footer-name:first-of-type {
+    margin-bottom: 1rem;
+}
+
+.comparison {
+    text-align: right;
+}
+
+.footer-sum,
+.percentage {
+    color: var(--clr-dark-brown);
+    font-weight: 700;
+}
+
+.footer-sum {
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.attribution {
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+@media  screen and (max-width: 510px) {
+    .chart-title {
+        font-size: 2.4rem;
+    }
+
+    .chart-wrapper {
+        gap: 1rem;
+    }
+
+    .chart-graph {
+        border-radius: 0.3rem;
+    }
+    
+    .footer-name {
+        font-size: 1.6rem;
+    }
+
+    .footer-sum {
+        font-size: 3.6rem;
+    }
+}
